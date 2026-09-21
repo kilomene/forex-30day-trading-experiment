@@ -436,6 +436,16 @@ class TraderEngine:
     def __init__(self, files_dir=None, state_dir=None, signals_file=None):
         self.paths = resolve_paths(files_dir, state_dir, signals_file)
         self.state = load_state(self.paths["state"])
+        # Guarantee the commands file exists (empty) at startup. The EA
+        # initializes a missing cursor to EOF on first sight of the file;
+        # if the file were created later already holding a command, that
+        # command would be skipped. Creating it now (empty) makes the EA
+        # anchor its cursor at 0=EOF before any command exists.
+        try:
+            if not os.path.exists(self.paths["commands"]):
+                open(self.paths["commands"], "a").close()
+        except OSError as e:
+            log(f"warning: could not create commands file: {e}")
 
     # -- journal / state -------------------------------------------------
     def journal(self, entry):
@@ -487,7 +497,13 @@ class TraderEngine:
         offset = self.state.get("trades_offset", 0)
         if size < offset:
             offset = 0
-        seen = set(self.state.get("trades_seen", []))
+        # Dedup keys are plain strings (JSON-stable). Older states may hold
+        # the key as a list (a tuple before the JSON round-trip); migrate.
+        seen = set()
+        for k in self.state.get("trades_seen", []):
+            if isinstance(k, (list, tuple)):
+                k = "|".join("" if v is None else str(v) for v in k)
+            seen.add(k)
         open_map = self.state.get("open_map", {})
         cmd_index = self.state.get("cmd_index", {})
         linked = 0
@@ -509,7 +525,9 @@ class TraderEngine:
                     offset = f.tell()
                     continue
                 t = ev.get("type")
-                key = (t, ev.get("command_id"), ev.get("ticket"), ev.get("deal"))
+                key = "|".join("" if v is None else str(v) for v in (
+                    t, ev.get("command_id"), ev.get("ticket"),
+                    ev.get("deal")))
                 if key in seen:
                     offset = f.tell()
                     continue
