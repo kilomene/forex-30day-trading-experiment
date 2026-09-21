@@ -6,9 +6,12 @@ FX weekend (server time, GMT+3 / EEST for the whole experiment period):
   - Friday 22:00 GMT close  ->  Saturday 01:00 server
   - Sunday 22:00 GMT open   ->  Monday 01:00 server
 
-So the market is CLOSED during:
-  * all of Saturday (server), and
-  * Sunday before 01:00 (server).
+The experiment rule is conservative: the market is treated as CLOSED for
+ALL of Saturday (server) — even though the first hour of Saturday server
+time is technically still Friday evening GMT — plus Sunday before 01:00
+(server). New positions are only ever blocked by this gate, never
+existing ones, so the conservative reading costs nothing and matches the
+charter ("Saturday all day" closed).
 
 Existing positions are always held; only NEW positions are blocked when
 the market is closed (journaled as skipped:market_closed).
@@ -26,8 +29,8 @@ from datetime import datetime
 SERVER_UTC_OFFSET_H = 3
 
 # Closed window: (weekday, start_hour) .. (weekday, end_hour), server time.
-# Monday=0 ... Sunday=6.
-CLOSED_FROM = (5, 1)   # Saturday 01:00
+# Monday=0 ... Sunday=6. All of Saturday is closed (conservative rule).
+CLOSED_FROM = (5, 0)   # Saturday 00:00
 CLOSED_TO = (6, 1)     # Sunday   01:00
 
 
@@ -54,8 +57,8 @@ def is_market_open(server_dt=None):
             hours=SERVER_UTC_OFFSET_H)
     wd = server_dt.weekday()          # Monday=0
     hh = server_dt.hour + server_dt.minute / 60.0
-    # closed from Saturday 01:00 (inclusive) until Sunday 01:00 (exclusive)
-    if wd == 5 and hh >= CLOSED_FROM[1]:
+    # closed all of Saturday (inclusive) until Sunday 01:00 (exclusive)
+    if wd == 5:
         return False
     if wd == 6 and hh < CLOSED_TO[1]:
         return False
