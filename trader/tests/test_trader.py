@@ -353,7 +353,8 @@ def test_dry_run_logs_three_intended_writes_zero_commands(tmp_path):
     for e in decs:
         assert e["volume"] and e["volume"] > 0
         assert e["risk_amount"] == pytest.approx(5000.0)
-    assert not os.path.exists(os.path.join(files, "nova_commands.jsonl"))
+    cmd_p = os.path.join(files, "nova_commands.jsonl")
+    assert os.path.getsize(cmd_p) == 0  # exists (startup touch), zero commands written
 
 
 def test_dry_run_is_idempotent_on_rerun(tmp_path):
@@ -429,7 +430,8 @@ def test_daily_loss_limit_trips_kill_switch_live(tmp_path):
     assert decisions[0] == "skipped:daily_loss_limit"
     with open(os.path.join(state, "trading_enabled")) as f:
         assert f.read() == "0"
-    assert not os.path.exists(os.path.join(files, "nova_commands.jsonl"))
+    cmd_p = os.path.join(files, "nova_commands.jsonl")
+    assert os.path.getsize(cmd_p) == 0  # exists (startup touch), zero commands written
     decs = [e for e in read_journal(state)
             if e.get("type") == "trade.decision"]
     assert decs[0]["decision"] == "skipped:daily_loss_limit"
