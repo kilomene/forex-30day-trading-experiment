@@ -41,8 +41,15 @@ def test_sunday_before_01_closed_after_open():
 
 
 def test_saturday_early_morning_boundary():
-    # Saturday 00:59 server -> still open (closure starts at 01:00)
-    assert mh.is_market_open(dt(5, 0, 59)) is True
+    # Saturday 00:59 server -> closed (all of Saturday is closed,
+    # conservative experiment rule)
+    assert mh.is_market_open(dt(5, 0, 59)) is False
+
+
+def test_saturday_all_day_closed():
+    # Every hour of Saturday server time is closed.
+    for h in (0, 3, 6, 9, 12, 15, 18, 21, 23):
+        assert mh.is_market_open(dt(5, h, 30)) is False
 
 
 def test_session_buckets():
