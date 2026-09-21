@@ -240,7 +240,8 @@ def test_market_closed_journaled_live(tmp_path):
     decs = [e for e in read_journal(state)
             if e.get("type") == "trade.decision"]
     assert decs[0]["context"]["market_open"] is False
-    assert not os.path.exists(os.path.join(files, "nova_commands.jsonl"))
+    cmd_p = os.path.join(files, "nova_commands.jsonl")
+    assert os.path.getsize(cmd_p) == 0  # exists (startup touch), zero commands written
 
 
 def test_config_changed_journaled(tmp_path):
@@ -295,3 +296,41 @@ def test_trade_opened_closed_full_events_with_hold_time(tmp_path):
     assert closed[0]["profit"] == 915.0
     assert closed[0]["hold_seconds"] == 90 * 60  # 22:15 -> 23:45
     assert closed[0]["reason"] == "tp"
+
+
+def test_commands_file_created_at_startup(tmp_path):
+    # Regression test for the 2026-09-21 incident: the EA anchors a missing
+    # cursor at EOF on first sight of nova_commands.jsonl, so a commands
+    # file created later already holding a command would be skipped. The
+    # engine must guarantee the (empty) file exists at startup.
+    files, state = make_sandbox(tmp_path)
+    cmd_path = os.path.join(files, "nova_commands.jsonl")
+    assert not os.path.exists(cmd_path)
+    te.TraderEngine(files_dir=files, state_dir=state)
+    assert os.path.exists(cmd_path)
+    assert os.path.getsize(cmd_path) == 0
+    # second init must not truncate an existing file with content
+    with open(cmd_path, "w") as f:
+        f.write('{"type":"trade.open"}\n')
+    te.TraderEngine(files_dir=files, state_dir=state)
+    assert os.path.getsize(cmd_path) > 0
+
+
+def test_trades_seen_survives_json_roundtrip(tmp_path):
+    # Regression: dedup keys were tuples; after a JSON round-trip they come
+    # back as lists, and set() on a list-of-lists raised
+    # "TypeError: unhashable type: 'list'", crash-looping the executor.
+    import trade_executor as te
+    files, state = make_sandbox(tmp_path)
+    # simulate a persisted state as JSON leaves it: key tuple -> list
+    st = {"offset": 0, "seen": [], "trades_offset": 0,
+          "trades_seen": [["trade.opened", "cmd-X", 111, 222]]}
+    json.dump(st, open(os.path.join(state, "trade_executor.state.json"), "w"))
+    open(os.path.join(files, "nova_trades.jsonl"), "w").close()  # empty file
+    eng2 = te.TraderEngine(files_dir=files, state_dir=state)
+    assert eng2.tail_trades() == 0  # must not crash
+    # and a re-run stays crash-free with the migrated string keys
+    eng3 = te.TraderEngine(files_dir=files, state_dir=state)
+    assert eng3.tail_trades() == 0
+    st2 = json.load(open(os.path.join(state, "trade_executor.state.json")))
+    assert all(isinstance(k, str) for k in st2["trades_seen"])
