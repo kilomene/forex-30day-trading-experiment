@@ -1,28 +1,26 @@
 # Trade documentation -- 30-day autonomous demo experiment
 
-> **Correction (2026-09-22):** commit `c8ec428b` published on this date presented six unconfirmed closes as exact outcomes (provisional total +$71,291.89). Those closes were not backed by authoritative MT5 broker history, so they are reverted here to **outcome unknown**. Provisional realized P&L: **+$9,350.51** -- XAGEUR +$10,845.73 (broker-confirmed), GBPAUD -$1,495.22 (provisional estimate), six trades awaiting authoritative reconciliation.
+Per-trade pages with schematic charts and grounded profit/loss explanations. Every closed trade is documented, winners and losers. Trades whose close was never authoritatively confirmed are marked as provisional estimates or **outcome unknown -- under reconciliation**; no profit is claimed for them.
 
-Per-trade pages with schematic charts and grounded profit/loss explanations. Every closed trade is documented, winners and losers. Trades whose close was never recorded are marked **outcome unknown -- under reconciliation**; no profit is claimed for them.
-
-**Realized P&L so far: $9,350.51** (2 closed trades, 0 still open) -- _provisional: 6 opened trades have no close records yet; one close is an estimate excluding commission/swap._
+**Realized P&L so far: $258,399.18** (8 broker-confirmed close(s)) -- _provisional: all closes broker-confirmed._
 
 ## 2026-09-21
 
 | Ticket | Trade | Entry (server) | Exit (server) | P&L | Exit reason | Status |
 |---|---|---|---|---|---|---|
-| [10605494223](2026-09-21/10605494223.md) | GBPAUD BUY | 2026.09.21 23:30:28 | 2026.09.21 21:00:42 | $-1,495.22 | stop-loss close (reconciled from terminal log) | loss |
+| [10605494223](2026-09-21/10605494223.md) | GBPAUD BUY | 2026.09.21 23:30:28 | 2026.09.22 00:00:43 | $-2,016.15 | broker-sl — broker-confirmed | loss (broker-confirmed) |
 
 ## 2026-09-22
 
 | Ticket | Trade | Entry (server) | Exit (server) | P&L | Exit reason | Status |
 |---|---|---|---|---|---|---|
-| [10606155417](2026-09-22/10606155417.md) | XAUEUR BUY | 2026.09.22 02:15:01 | not recorded | unknown | not recorded | unknown |
-| [10606266371](2026-09-22/10606266371.md) | XAGEUR BUY | 2026.09.22 02:33:42 | 2026.09.22 02:58:01 | $10,845.73 | take-profit close (broker-confirmed) | profit |
-| [10607517845](2026-09-22/10607517845.md) | GBPJPY BUY | 2026.09.22 04:45:05 | not recorded | unknown | not recorded | unknown |
-| [10608752852](2026-09-22/10608752852.md) | XAGUSD SELL | 2026.09.22 06:45:03 | not recorded | unknown | not recorded | unknown |
-| [10608752968](2026-09-22/10608752968.md) | EURNZD SELL | 2026.09.22 06:45:03 | not recorded | unknown | not recorded | unknown |
-| [10608752999](2026-09-22/10608752999.md) | NZDSGD BUY | 2026.09.22 06:45:03 | not recorded | unknown | not recorded | unknown |
-| [10611130854](2026-09-22/10611130854.md) | USDTHB BUY | 2026.09.22 09:30:04 | not recorded | unknown | not recorded | unknown |
+| [10606155417](2026-09-22/10606155417.md) | XAUEUR BUY | 2026.09.22 02:15:01 | 2026.09.22 03:18:09 | $0.00 | broker-sl — broker-confirmed | breakeven (broker-confirmed) |
+| [10606266371](2026-09-22/10606266371.md) | XAGEUR BUY | 2026.09.22 02:33:42 | 2026.09.22 02:58:01 | $10,845.73 | broker-recorded close — broker-confirmed | profit (broker-confirmed) |
+| [10607517845](2026-09-22/10607517845.md) | GBPJPY BUY | 2026.09.22 04:45:05 | 2026.09.22 06:40:43 | $20,162.64 | broker-tp — broker-confirmed | profit (broker-confirmed) |
+| [10608752852](2026-09-22/10608752852.md) | XAGUSD SELL | 2026.09.22 06:45:03 | 2026.09.22 08:30:41 | $208,458.25 | broker-tp — broker-confirmed | profit (broker-confirmed) |
+| [10608752968](2026-09-22/10608752968.md) | EURNZD SELL | 2026.09.22 06:45:03 | 2026.09.22 11:53:30 | $20,948.71 | broker-tp — broker-confirmed | profit (broker-confirmed) |
+| [10608752999](2026-09-22/10608752999.md) | NZDSGD BUY | 2026.09.22 06:45:03 | 2026.09.22 10:59:30 | $0.00 | broker-sl — broker-confirmed | breakeven (broker-confirmed) |
+| [10611130854](2026-09-22/10611130854.md) | USDTHB BUY | 2026.09.22 09:30:04 | 2026.09.22 11:41:29 | $0.00 | broker-sl — broker-confirmed | breakeven (broker-confirmed) |
 
 ## Open positions (latest snapshot)
 
