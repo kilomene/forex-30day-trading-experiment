@@ -2,7 +2,7 @@
 
 Per-trade pages with schematic charts and grounded profit/loss explanations. Every closed trade is documented, winners and losers. Trades whose close was never authoritatively confirmed are marked as provisional estimates or **outcome unknown -- under reconciliation**; no profit is claimed for them.
 
-**Realized P&L so far: $256,203.23** (12 broker-confirmed close(s)) -- _provisional: excludes 6 provisional estimate(s) (not counted); 7 outcome(s) unknown -- under reconciliation; 4 still open._
+**Realized P&L so far: $259,057.00** (21 broker-confirmed close(s)) -- _provisional: excludes 6 provisional estimate(s) (not counted); 2 outcome(s) unknown -- under reconciliation; 2 still open._
 
 ## 2026-09-21
 
@@ -29,11 +29,11 @@ Per-trade pages with schematic charts and grounded profit/loss explanations. Eve
 | [10622343816](2026-09-22/10622343816.md) | XAGEUR BUY | 2026.09.22 17:30:04 | 2026.09.22 17:57:49 | $-113.04 (provisional) | command — provisional (unconfirmed) | provisional estimate |
 | [10622810088](2026-09-22/10622810088.md) | EURGBP SELL | 2026.09.22 17:45:02 | 2026.09.22 17:57:49 | $-102.22 (provisional) | command — provisional (unconfirmed) | provisional estimate |
 | [10622810175](2026-09-22/10622810175.md) | NZDSGD SELL | 2026.09.22 17:45:02 | 2026.09.22 17:57:49 | $227.75 (provisional) | command — provisional (unconfirmed) | provisional estimate |
-| [10623564384](2026-09-22/10623564384.md) | NZDUSD SELL | 2026.09.22 18:15:02 | not recorded | unknown | not recorded | unknown |
-| [10623564489](2026-09-22/10623564489.md) | XAUEUR BUY | 2026.09.22 18:15:02 | still open | still open | still open | open |
-| [10623888393](2026-09-22/10623888393.md) | XAGUSD BUY | 2026.09.22 18:30:01 | not recorded | unknown | not recorded | unknown |
-| [10624184608](2026-09-22/10624184608.md) | USDCHF BUY | 2026.09.22 18:45:03 | not recorded | unknown | not recorded | unknown |
-| [10624459020](2026-09-22/10624459020.md) | EURGBP BUY | 2026.09.22 19:00:05 | not recorded | unknown | not recorded | unknown |
+| [10623564384](2026-09-22/10623564384.md) | NZDUSD SELL | 2026.09.22 18:15:02 | 2026.09.22 22:31:02 | $-197.49 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
+| [10623564489](2026-09-22/10623564489.md) | XAUEUR BUY | 2026.09.22 18:15:02 | 2026.09.23 05:15:33 | $0.08 | broker-recorded close — broker-confirmed | profit (broker-confirmed) |
+| [10623888393](2026-09-22/10623888393.md) | XAGUSD BUY | 2026.09.22 18:30:01 | 2026.09.22 21:06:14 | $3,901.50 | broker-recorded close — broker-confirmed | profit (broker-confirmed) |
+| [10624184608](2026-09-22/10624184608.md) | USDCHF BUY | 2026.09.22 18:45:03 | 2026.09.22 21:09:26 | $-205.23 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
+| [10624459020](2026-09-22/10624459020.md) | EURGBP BUY | 2026.09.22 19:00:05 | 2026.09.23 00:00:32 | $-222.86 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
 | [10627661080](2026-09-22/10627661080.md) | AUDJPY BUY | 2026.09.22 22:00:04 | 2026.09.23 00:01:09 | $-105.76 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
 | [10628042239](2026-09-22/10628042239.md) | GBPCAD BUY | 2026.09.22 22:30:04 | 2026.09.23 00:00:32 | $-110.82 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
 
@@ -41,23 +41,23 @@ Per-trade pages with schematic charts and grounded profit/loss explanations. Eve
 
 | Ticket | Trade | Entry (server) | Exit (server) | P&L | Exit reason | Status |
 |---|---|---|---|---|---|---|
-| [10628887244](2026-09-23/10628887244.md) | GBPCAD BUY | 2026.09.23 01:15:00 | still open | still open | still open | open |
-| [10628887260](2026-09-23/10628887260.md) | CHFJPY BUY | 2026.09.23 01:15:00 | still open | still open | still open | open |
-| [10629024456](2026-09-23/10629024456.md) | AUDSGD BUY | 2026.09.23 01:45:40 | still open | still open | still open | open |
-| [10629297282](2026-09-23/10629297282.md) | USDTRY BUY | 2026.09.23 02:47:33 | not recorded | unknown | not recorded | unknown |
+| [10628887244](2026-09-23/10628887244.md) | GBPCAD BUY | 2026.09.23 01:15:00 | 2026.09.23 06:53:27 | $-104.12 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
+| [10628887260](2026-09-23/10628887260.md) | CHFJPY BUY | 2026.09.23 01:15:00 | 2026.09.23 13:38:20 | $-105.98 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
+| [10629024456](2026-09-23/10629024456.md) | AUDSGD BUY | 2026.09.23 01:45:40 | 2026.09.23 02:41:40 | $-111.65 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
+| [10629297282](2026-09-23/10629297282.md) | USDTRY BUY | 2026.09.23 02:47:33 | still open | still open | still open | open |
 | [10629378957](2026-09-23/10629378957.md) | EURJPY BUY | 2026.09.23 03:00:02 | not recorded | unknown | not recorded | unknown |
 | [10629378995](2026-09-23/10629378995.md) | AUDSGD SELL | 2026.09.23 03:00:02 | not recorded | unknown | not recorded | unknown |
+| [10636719024](2026-09-23/10636719024.md) | GBPNZD SELL | 2026.09.23 13:00:12 | 2026.09.23 14:13:05 | $-100.48 | broker-recorded close — broker-confirmed | loss (broker-confirmed) |
+| [10638747713](2026-09-23/10638747713.md) | EURSEK BUY | 2026.09.23 14:45:04 | still open | still open | still open | open |
 
 ## Open positions (latest snapshot)
 
-Snapshot: 2026.09.22 23:28:37 (MT5 server time (UTC+3)). Floating P&L is unrealized.
+Snapshot: 2026.09.23 15:08:22 (MT5 server time (UTC+3)). Floating P&L is unrealized.
 
 | Ticket | Symbol | Dir | Volume | Open | Current | Floating P&L |
 |---|---|---|---|---|---|---|
-| 10623564489 | XAUEUR | BUY | 0.11 | 3792.25 | 3811.58 | $243.47 |
-| 10628887244 | GBPCAD | BUY | 1.04 | 1.87681 | 1.87667 | $-10.35 |
-| 10628887260 | CHFJPY | BUY | 1.13 | 191.856 | 191.89 | $24.40 |
-| 10629024456 | AUDSGD | BUY | 2.19 | 0.90742 | 0.90696 | $-79.01 |
+| 10629297282 | USDTRY | BUY | 1.3 | 48.84039 | 48.8373 | $-8.23 |
+| 10638747713 | EURSEK | BUY | 0.95 | 11.2715 | 11.2695 | $-19.24 |
 
 _Charts are schematic -- reconstructed from signal parameters; no historical candle data is stored in this environment._
 _Generated by trade_report.py. Demo account, no real money._
