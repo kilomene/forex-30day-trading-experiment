@@ -1,0 +1,35 @@
+{
+  "capital_basis": 200000,
+  "dry_run": false,
+  "enforce_consecutive_losses_gate": false,
+  "enforce_correlation_gate": false,
+  "enforce_single_position_per_symbol": false,
+  "enforce_spread_gate": false,
+  "max_concurrent_trades": 10,
+  "max_consecutive_losses": 4,
+  "max_correlated_positions": 1,
+  "max_daily_loss_pct": 3.0,
+  "max_spread_points": 50,
+  "max_total_exposure_lots": 0,
+  "require_stop_loss": true,
+  "risk_per_trade_pct": 0.05,
+  "tick_value_overrides": {
+    "XAUUSD": 1.0,
+    "XAGUSD": 5.0
+  },
+  "blocked_symbols": [
+    "XAUCHF",
+    "XAUGBP",
+    "XAGEUR",
+    "XAUEUR",
+    "FRA40",
+    "AUS200",
+    "US30",
+    "HK50",
+    "US500"
+  ],
+  "trading_enabled": true,
+  "profit_plunge_guard": true,
+  "profit_plunge_arm_usd": 100.0,
+  "profit_plunge_keep_pct": 0.5
+}
